@@ -1,0 +1,15 @@
+extends pug/layout.pug
+
+block meta
+  title Главная
+
+block header
+  +header()
+
+block content
+  p.mt-5.text-center {{aboutText}}
+  +test()
+
+
+block footer
+  +footer()

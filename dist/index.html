@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="img/favicon/favicon.ico">
+  <title>Главная</title>
+</head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;amp;subset=cyrillic">
+<link rel="stylesheet" href="css/style.css">
+
+<body>
+  <!-- wrapper -->
+  <div class="wrapper" id="app" :class="{'modal-open': modalShow}">
+    <div id="page-preloader" v-if="isLoad">
+      <div class="spinner" id="spinner"></div>
+    </div><!-- header-->
+    <header class="header" style="background: gray; color: #fff; text-align: center">header</header><!-- /header-->
+    <!-- content -->
+    <div class="content">
+      <p class="mt-5 text-center">{{aboutText}}</p><!-- test-->
+      <div class="test">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h2>Tabs</h2>
+              <tab-component inline-template id="myTab">
+                <div>
+                  <ul class="nav nav-tabs" id="" role="tablist">
+                    <li class="nav-item"><a class="nav-link" :class="{active: activeTab === 1}" @click="activeTab = 1" href="#" role="tab" aria-controls="home" aria-selected="true">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" :class="{active: activeTab === 2}" @click="activeTab = 2" href="#" role="tab" aria-controls="profile" aria-selected="false">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" :class="{active: activeTab === 3}" @click="activeTab = 3" href="#" role="tab" aria-controls="contact" aria-selected="false">Contact</a></li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade" :class="{active: activeTab === 1, show: activeTab === 1}" id="home" role="tabpanel" aria-labelledby="home-tab">Home...</div>
+                    <div class="tab-pane fade" :class="{active: activeTab === 2, show: activeTab === 2}" @click="activeTab = 1" id="profile" role="tabpanel" aria-labelledby="profile-tab">Profile...</div>
+                    <div class="tab-pane fade" :class="{active: activeTab === 3, show: activeTab === 3}" @click="activeTab = 1" id="contact" role="tabpanel" aria-labelledby="contact-tab">Contact...</div>
+                  </div>
+                </div>
+              </tab-component>
+              <tab2-component inline-template id="myTab2">
+                <div>
+                  <ul class="nav nav-tabs" id="" role="tablist">
+                    <li class="nav-item"><a class="nav-link" :class="{active: activeTab === 1}" @click="activeTab = 1" href="#" role="tab" aria-controls="home" aria-selected="true">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" :class="{active: activeTab === 2}" @click="activeTab = 2" href="#" role="tab" aria-controls="profile" aria-selected="false">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" :class="{active: activeTab === 3}" @click="activeTab = 3" href="#" role="tab" aria-controls="contact" aria-selected="false">Contact</a></li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade" :class="{active: activeTab === 1, show: activeTab === 1}" id="home" role="tabpanel" aria-labelledby="home-tab">Home...</div>
+                    <div class="tab-pane fade" :class="{active: activeTab === 2, show: activeTab === 2}" @click="activeTab = 1" id="profile" role="tabpanel" aria-labelledby="profile-tab">Profile...</div>
+                    <div class="tab-pane fade" :class="{active: activeTab === 3, show: activeTab === 3}" @click="activeTab = 1" id="contact" role="tabpanel" aria-labelledby="contact-tab">Contact...</div>
+                  </div>
+                </div>
+              </tab2-component>
+              <hr />
+              <h2>Modal</h2><button class="btn btn-primary" type="button" @click="toggleModal">Launch demo modal</button>
+              <div class="modal fade" :class="{show: modalShow}" :style="modalStyle" @click="hideModal($event)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document" ref="modalDialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Modal title</h5><button class="close" type="button" @click="toggleModal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">Modal content</div>
+                    <div class="modal-footer"><button type="button" class="btn btn-secondary" @click="toggleModal">Close</button>
+                      <button type="button" class="btn btn-primary" @click="toggleModal">Save changes</button></div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-backdrop fade show" v-if="modalShow"></div>
+              <hr />
+              <h2>Collapse</h2><button class="btn btn-primary mb-3" type="button" @click="collapse = !collapse">Button with data-target</button>
+              <transition name="fade">
+                <div class="card card-body" v-if="collapse">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</div>
+              </transition>
+              <hr />
+              <h2>Dopdown</h2>
+              <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" @click="dropdown = !dropdown">Dropdown link</a>
+                <transition name="fade">
+                  <div class="dropdown-menu" style="display: block" v-if="dropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </transition>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /test-->
+    </div><!-- /content -->
+    <!-- footer-->
+    <footer class="footer" style="background: gray; color: #fff; text-align: center">footer</footer><!-- /footer-->
+  </div><!-- /wrapper -->
+  <!-- scripts-->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script src="js/vendor.min.js"></script>
+  <script src="js/main.js"></script><!-- /scripts-->
+</body>
+
+</html>

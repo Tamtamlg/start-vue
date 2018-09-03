@@ -1,0 +1,43 @@
+//- Стандартный шаблон страницы
+include mixins.pug
+
+doctype html
+html(lang='ru')
+
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no")
+    meta(name="format-detection" content="telephone=no")
+    //- Favicon
+    link(rel="shortcut icon" href="img/favicon/favicon.ico")
+
+    block meta
+      title New-project
+
+  block head
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;subset=cyrillic")
+    link(rel='stylesheet' href='css/style.css')
+
+
+  body
+    <!-- wrapper -->
+    div#app.wrapper(:class="{'modal-open': modalShow}")
+      div#page-preloader(v-if="isLoad")
+        div#spinner.spinner
+
+      //- header
+      block header
+
+      <!-- content -->
+      div.content
+        block content
+      <!-- /content -->
+
+      //- footer
+      block footer
+
+    <!-- /wrapper -->
+
+      block scripts
+        +scripts()
